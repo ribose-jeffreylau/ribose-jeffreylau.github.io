@@ -1,0 +1,167 @@
+<div class="document">
+{%- if document.docstatus.stage.value == "publish" -%}
+{% assign stagetag = document.docstatus.stage.value %}
+{%- else -%}
+{% assign stagetag = "updated" %}
+{%- endif -%}
+
+{%- if document.link.content -%}
+  {%- case document.link.type -%}
+    {%- when "html" -%}
+      {%- assign html_link = document.link.content -%}
+    {%- when "pdf" -%}
+      {%- assign pdf_link = document.link.content -%}
+    {%- when "doc" -%}
+      {%- assign doc_link = document.link.content -%}
+    {%- when "rxl" -%}
+      {%- assign rxl_link = document.link.content -%}
+    {%- when "xml" -%}
+      {%- assign xml_link = document.link.content -%}
+  {%- endcase -%}
+{%- else -%}
+  {%- for link in document.link -%}
+    {%- case link.type -%}
+      {%- when "html" -%}
+        {%- assign html_link = link.content -%}
+      {%- when "pdf" -%}
+        {%- assign pdf_link = link.content -%}
+      {%- when "doc" -%}
+        {%- assign doc_link = link.content -%}
+      {%- when "rxl" -%}
+        {%- assign rxl_link = link.content -%}
+      {%- when "xml" -%}
+        {%- assign xml_link = link.content -%}
+    {%- endcase -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- unless html_link == blank or html_link == nil -%}
+{%- if html_link contains '://' -%}
+{%- assign htmluri = html_link -%}
+{%- else -%}
+{%- assign htmluri = html_link | prepend: "/" -%}
+{%- endif -%}
+{%- endunless -%}
+
+{%- unless pdf_link == blank or pdf_link == nil -%}
+{%- if pdf_link contains '://' -%}
+{%- assign pdfuri = pdf_link -%}
+{%- else -%}
+{%- assign pdfuri = pdf_link | prepend: "/" -%}
+{%- endif -%}
+{%- endunless -%}
+
+{%- unless doc_link == blank or doc_link == nil -%}
+{%- if doc_link contains '://' -%}
+{%- assign docuri = doc_link -%}
+{%- else -%}
+{%- assign docuri = doc_link | prepend: "/" -%}
+{%- endif -%}
+{%- endunless -%}
+
+{%- unless xml_link == blank or xml_link == nil -%}
+{%- if xml_link contains '://' -%}
+{%- assign xmluri = xml_link -%}
+{%- else -%}
+{%- assign xmluri = xml_link | prepend: "/" -%}
+{%- endif -%}
+{%- endunless -%}
+
+{%- unless rxl_link == blank or rxl_link == nil -%}
+{%- if rxl_link contains '://' -%}
+{%- assign rxluri = rxl_link -%}
+{%- else -%}
+{%- assign rxluri = rxl_link | prepend: "/" -%}
+{%- endif -%}
+{%- endunless -%}
+
+  <div class="doc-line">
+    <div class="doc-identifier">
+      <h{{ depth }}>
+      {%- if htmluri == blank or htmluri == nil -%}
+        {{ document.docid.id }}
+      {%- else -%}
+        <a href="{{ htmluri }}">{{ document.docid.id }}</a>
+      {%- endif -%}
+      </h{{ depth }}>
+    </div>
+
+    <div class="doc-type-wrap">
+      <div class="doc-type {{ document.doctype | downcase | split: " " | join: "-" }}">
+      {{ document.doctype }}
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-title">
+    <h{{ depth | plus: 1 }}>
+      {%- if htmluri == blank or htmluri == nil -%}
+        {{ document.title[0].content }}
+      {%- else -%}
+        <a href="{{ htmluri }}">{{ document.title.content }}</a>
+      {%- endif -%}
+    </h{{ depth | plus: 1 }}>
+  </div>
+
+  <div class="doc-info {{ document.docstatus.stage.value | downcase }}">
+    <div class="doc-stage {{ document.docstatus.stage.value | downcase }}">
+      {{ document.docstatus.stage.value }}
+    </div>
+    {%- unless document.revdate == blank or document.revdate == nil -%}
+    <div class="doc-dates">
+      <div class="doc-{{ stagetag | downcase }}">
+        ({{ document.revdate | date: "%Y-%m-%d" }})
+      </div>
+    </div>
+    {%- endunless -%}
+  </div>
+
+  {%- unless document.abstract.content == blank or document.abstract.content == nil -%}
+  <br>
+  <div class="doc-abstract">
+    {{ document.abstract.content }}
+  </div>
+  {%- endunless -%}
+
+  {%- if rxluri -%}
+  <div class="doc-bib">
+    <div class="doc-bib-rxl">
+      <a href="{{ rxluri }}">Relaton XML</a>
+    </div>
+  </div>
+  {%- endif -%}
+
+  <div class="doc-access">
+   {%- unless htmluri == blank or htmluri == nil -%}
+    <div class="doc-access-button-html">
+      <a href="{{ htmluri }}">HTML</a>
+    </div>
+  {%- endunless -%}
+   {%- unless pdfuri == blank or pdfuri == nil -%}
+    <div class="doc-access-button-pdf">
+      <a href="{{ pdfuri }}">PDF</a>
+    </div>
+  {%- endunless -%}
+   {%- unless docuri == blank or docuri == nil -%}
+    <div class="doc-access-button-doc">
+      <a href="{{ docuri }}">Word</a>
+    </div>
+  {%- endunless -%}
+   {%- unless xmluri == blank or xmluri == nil -%}
+    <div class="doc-access-button-xml">
+      <a href="{{ xmluri }}">XML</a>
+    </div>
+  {%- endunless -%}
+  </div>
+</div>
+
+{%- assign htmluri = nil -%}
+{%- assign html_link = nil -%}
+{%- assign pdfuri = nil -%}
+{%- assign pdf_link = nil -%}
+{%- assign docuri = nil -%}
+{%- assign doc_link = nil -%}
+{%- assign xmluri = nil -%}
+{%- assign xml_link = nil -%}
+{%- assign rxluri = nil -%}
+{%- assign rxl_link = nil -%}
