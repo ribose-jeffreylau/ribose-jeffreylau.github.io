@@ -58,7 +58,7 @@ const description = "This is the official registry for the ISO 24229 standard.";
     </main>
     <footer>
       <div class="footer-wrapper">
-        <div class="copyright-text">© {new Date().getFullYear()} CalConnect</div>
+        <div class="copyright-text">© All Rights Reserved</div>
         <menu class="social-links">
           <li>
             <a href="https://github.com/iso24229/iso24229.github.io" target="_blank">
@@ -249,6 +249,11 @@ footer {
   }
 }
 
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .logo-iso {
   /* background-color: #094e9c; */
   width: var(--default-logo-dimension);
@@ -319,7 +324,6 @@ main {
       h1, h2, h3, h4, h5, h6 {
         text-align: left;
       }
-
 
       h1 {
         font-size: max(2rem, min(3rem, 7vw));
