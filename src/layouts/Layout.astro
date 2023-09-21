@@ -90,7 +90,7 @@ const description = "This is the official registry for the ISO 24229 standard.";
     </footer>
   </body>
 </html>
-<style is:global>
+<style lang="scss" is:global>
 :root {
   --default-logo-dimension: 80px;
   --content-width: 1200px;
@@ -157,6 +157,7 @@ h1 {
   text-align: center;
 
   a {
+    color: black;
     display: inline-block;
 
     &:visited {
@@ -332,15 +333,20 @@ main {
 }
 
 @media only screen
+  and (-webkit-min-device-pixel-ratio: 4)
   and (min-device-width: 0px)
   and (max-device-width: 415px) {
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: left;
+  }
+
   header {
     .header-wrapper {
       display: grid;
 
       h1 {
         font-size: max(2rem, min(3rem, 7vw));
-        text-align: left;
       }
 
       .logo-iso {
