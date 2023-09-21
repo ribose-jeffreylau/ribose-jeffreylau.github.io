@@ -58,33 +58,73 @@ const description = "This is the official registry for the ISO 24229 standard.";
     </main>
     <footer>
       <div class="footer-wrapper">
-        <div class="copyright-text">© All Rights Reserved</div>
+        <div class="source-code">
+          <h3>Source code</h3>
+          <menu>
+            <li>
+              <a href="https://github.com/iso24229/iso24229.github.io" target="_blank">
+                Website source code
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/iso24229/iso24229-registry" target="_blank">
+                Registry data
+              </a>
+            </li>
+          </menu>
+        </div>
+        <div class="created-by">
+          <p>
+            Powered by
+          </p>
+          <ul>
+            <li>
+              <a href="https://www.calconnect.org/" target="_blank">
+                CalConnect
+              </a>
+            </li>
+            <li>
+              <a href="https://open.ribose.com" target="_blank">
+                Ribose Inc
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <menu class="social-links">
+          <h3>Social</h3>
           <li>
-            <a href="https://github.com/iso24229/iso24229.github.io" target="_blank">
-              Website source code
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/iso24229/iso24229-registry" target="_blank">
-              Registry data
+            <a href="https://twitter.com/isostandards" target="_blank">
+              𝕏.com
             </a>
           </li>
         </menu>
-        <div class="created-by">
-          <li>
-            <a href="https://www.calconnect.org/" target="_blank">
-              CalConnect
-            </a>
-          </li>
-          <li>
-            <a href="https://open.ribose.com" target="_blank">
-              Ribose Inc
-            </a>
-          </li>
-        </div>
-        <div class="logo-iso">
-          <img class="logo-iso" src="/iso-logo-black.svg" />
+
+        <div class="official-affiliation-notice">
+          <h3>Legal</h3>
+          <div class="logo-iso">
+            <a href="https://www.iso.org" target="_blank"><img class="logo-iso" src="/iso-logo-black.svg" /></a>
+          </div>
+          <div class="copyright-notice">
+            <div>
+            © All Rights Reserved
+            </div>
+          </div>
+          <div class="working-group-text">
+            <a href="https://www.iso.org" target="_blank">ISO</a> / <a href="https://www.iso.org/committee/48750.html" target="_blank">TC 46</a> / WG 3
+          </div>
+          <menu>
+            <li>
+              <a href="/privacy">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="/tos">
+                Terms of Service
+              </a>
+            </li>
+          </menu>
         </div>
       </div>
     </footer>
@@ -170,6 +210,7 @@ a {
   text-decoration: none;
   position: relative;
   display: inline-block;
+  color: black;
 
   &:not([role=card]) {
     &:hover, &:active {
@@ -249,9 +290,28 @@ footer {
   }
 }
 
+.official-affiliation-notice {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-wrapper {
   display: flex;
   justify-content: space-between;
+
+  ul, menu {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .created-by p {
+    text-transform: uppercase;
+    font-size: 0.5rem;
+  }
+
+  h3 {
+    padding-bottom: 0.2rem;
+  }
 }
 
 .logo-iso {
