@@ -306,36 +306,8 @@ main {
 }
 
 @media only screen
-  and (min-device-width: 0px)
-  and (max-device-width: 320px) {
-
-  /* header { */
-  /*   .header-wrapper { */
-  /*     h1 { */
-  /*       font-size: 2rem; */
-  /*     } */
-  /*   } */
-  /* } */
-
-  /* .logo-iso { */
-  /*   width: min(var(--default-logo-dimension), 1vw); */
-  /* } */
-
-  /* nav { */
-  /*   background: pink; */
-  /*   position: fixed; */
-  /*   width: 50vw; */
-  /*   height: 100vw; */
-  /*   top: 0; */
-  /*   right: 0; */
-  /* } */
-
-}
-
-@media only screen
-  and (-webkit-min-device-pixel-ratio: 4)
-  and (min-device-width: 0px)
-  and (max-device-width: 415px) {
+  and (min-width: 1px)
+  and (max-width: 415px) {
 
   h1, h2, h3, h4, h5, h6 {
     text-align: left;
@@ -344,6 +316,10 @@ main {
   header {
     .header-wrapper {
       display: grid;
+      h1, h2, h3, h4, h5, h6 {
+        text-align: left;
+      }
+
 
       h1 {
         font-size: max(2rem, min(3rem, 7vw));
@@ -367,6 +343,13 @@ main {
       }
     }
   }
+
+  .main-wrapper {
+    h1, h2, h3, h4, h5, h6 {
+      text-align: left;
+    }
+  }
+
   footer {
     .logo-iso {
       width: min(var(--default-logo-dimension), 14vw);
@@ -378,8 +361,8 @@ main {
 
 
 @media only screen
-  and (min-device-width: 415px)
-  and (max-device-width: 830px) {
+  and (min-width: 415px)
+  and (max-width: 830px) {
 
   header {
     .header-wrapper {
@@ -408,8 +391,8 @@ main {
 }
 
 @media only screen
-  and (min-device-width: 830px)
-  and (max-device-width: 1200px){
+  and (min-width: 830px)
+  and (max-width: 1200px){
 
   nav {
     /* background: green; */
