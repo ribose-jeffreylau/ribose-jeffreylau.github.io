@@ -42,6 +42,13 @@ const description = "This is the official registry for the ISO 24229 standard.";
             </div>
           </a>
         </h1>
+        <nav>
+          <menu>
+            <li><a href="/">Home</a></li>
+            <li><a href="/registry">Registry</a></li>
+            <li><a href="/about">About</a></li>
+          </menu>
+        </nav>
       </div>
     </header>
     <main>
@@ -51,6 +58,31 @@ const description = "This is the official registry for the ISO 24229 standard.";
     </main>
     <footer>
       <div class="footer-wrapper">
+        <div class="copyright-text">© {new Date().getFullYear()} CalConnect</div>
+        <menu class="social-links">
+          <li>
+            <a href="https://github.com/iso24229/iso24229.github.io" target="_blank">
+              Website source code
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/iso24229/iso24229-registry" target="_blank">
+              Registry data
+            </a>
+          </li>
+        </menu>
+        <div class="created-by">
+          <li>
+            <a href="https://www.calconnect.org/" target="_blank">
+              CalConnect
+            </a>
+          </li>
+          <li>
+            <a href="https://open.ribose.com" target="_blank">
+              Ribose Inc
+            </a>
+          </li>
+        </div>
         <div class="logo-iso">
           <img class="logo-iso" src="/iso-logo-black.svg" />
         </div>
@@ -77,6 +109,7 @@ const description = "This is the official registry for the ISO 24229 standard.";
     rgb(var(--accent-light)) 60%,
     rgb(var(--accent-light)) 95%
     );
+  --main-padding-lr: max(1rem, calc((100% - var(--content-width))/2));
 }
 
 /* Use padding to space out the content */
@@ -161,18 +194,20 @@ a {
 
 header {
   /* padding: 1rem 0rem; */
-  padding: 1rem calc((100% - var(--content-width))/2);
+  padding: 1rem var(--main-padding-lr);
   border-bottom: 2px solid black;
   width: 100%;
 
   .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     .logo-iso {
     }
 
     h1 {
       text-align: justify;
-      margin: auto;
     }
 
     div {
@@ -183,12 +218,27 @@ header {
         padding-left: 1rem;
       }
     }
+
+    nav {
+      menu {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        li + li {
+          padding-left: 1rem;
+        }
+        a {
+          font-weight: 600;
+        }
+      }
+    }
   }
 }
 
 
 footer {
-  padding: 2rem calc((100% - var(--content-width))/2);
+  padding: 2rem var(--main-padding-lr);
+
   border-top: 2px solid black;
   width: 100%;
 
@@ -205,16 +255,16 @@ footer {
   height: var(--default-logo-dimension);
 }
 
-div.logo-iso {
-  background-image: url("/iso-logo-blue-9,78,156.svg");
-  background-size: 80px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+/* div.logo-iso { */
+/*   background-image: url("/iso-logo-blue-9,78,156.svg"); */
+/*   background-size: 80px; */
+/*   background-repeat: no-repeat; */
+/*   background-position: center; */
+/* } */
 
 main {
   flex: 1;
-  padding: 2rem calc((100% - var(--content-width))/2);
+  padding: 2rem var(--main-padding-lr);
   width: 100%;
   /* max-width: calc(100% - 2rem); */
   font-size: 20px;
@@ -253,4 +303,112 @@ main {
     justify-content: center;
   }
 }
+
+@media only screen
+  and (min-device-width: 0px)
+  and (max-device-width: 320px) {
+
+  /* header { */
+  /*   .header-wrapper { */
+  /*     h1 { */
+  /*       font-size: 2rem; */
+  /*     } */
+  /*   } */
+  /* } */
+
+  /* .logo-iso { */
+  /*   width: min(var(--default-logo-dimension), 1vw); */
+  /* } */
+
+  /* nav { */
+  /*   background: pink; */
+  /*   position: fixed; */
+  /*   width: 50vw; */
+  /*   height: 100vw; */
+  /*   top: 0; */
+  /*   right: 0; */
+  /* } */
+
+}
+
+@media only screen
+  and (min-device-width: 0px)
+  and (max-device-width: 415px) {
+  header {
+    .header-wrapper {
+      display: grid;
+
+      h1 {
+        font-size: max(2rem, min(3rem, 7vw));
+        text-align: left;
+      }
+
+      .logo-iso {
+        display: none;
+      }
+
+      .title-text {
+        padding: 0;
+      }
+
+    }
+
+    nav {
+      /* background: yellow; */
+      menu {
+        padding: 0;
+        padding-top: 1rem;
+      }
+    }
+  }
+  footer {
+    .logo-iso {
+      width: min(var(--default-logo-dimension), 14vw);
+      height: min(var(--default-logo-dimension), 14vw);
+    }
+  }
+
+}
+
+
+@media only screen
+  and (min-device-width: 415px)
+  and (max-device-width: 830px) {
+
+  header {
+    .header-wrapper {
+      display: grid;
+
+      h1 {
+        font-size: max(2rem, min(3rem, 7vw));
+      }
+    }
+
+    nav {
+      /* background: yellow; */
+      menu {
+        padding: 1rem 0;
+        padding-left: calc(1rem + min(var(--default-logo-dimension), 14vw));
+      }
+    }
+  }
+
+  .logo-iso {
+    width: min(var(--default-logo-dimension), 14vw);
+    height: min(var(--default-logo-dimension), 14vw);
+  }
+
+
+}
+
+@media only screen
+  and (min-device-width: 830px)
+  and (max-device-width: 1200px){
+
+  nav {
+    /* background: green; */
+  }
+
+}
+
 </style>
