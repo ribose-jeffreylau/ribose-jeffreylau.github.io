@@ -74,9 +74,9 @@ const description = "This is the official registry for the ISO 24229 standard.";
           </menu>
         </div>
         <div class="created-by">
-          <p>
+          <h6 class="created-by-text">
             Powered by
-          </p>
+          </h6>
           <ul>
             <li>
               <a href="https://www.calconnect.org/" target="_blank">
@@ -302,11 +302,15 @@ footer {
   ul, menu {
     padding: 0;
     list-style-type: none;
+    li {
+      padding-top: 0.5rem;
+    }
   }
 
-  .created-by p {
+  .created-by-text {
     text-transform: uppercase;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
+    padding-bottom: 0.1rem;
   }
 
   h3 {
@@ -335,6 +339,10 @@ main {
   /* max-width: calc(100% - 2rem); */
   font-size: 20px;
   line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  cursor: default;
 }
 
 .main-wrapper {
