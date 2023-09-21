@@ -63,7 +63,7 @@ const description = "This is the official registry for the ISO 24229 standard.";
           <menu>
             <li>
               <a href="https://github.com/iso24229/iso24229.github.io" target="_blank">
-                Website source code
+                This website
               </a>
             </li>
             <li>
@@ -414,15 +414,16 @@ main {
     }
   }
 
-  footer {
-    .logo-iso {
-      width: min(var(--default-logo-dimension), 14vw);
-      height: min(var(--default-logo-dimension), 14vw);
-    }
-  }
-
 }
 
+@media only screen
+and (max-width: 710px) {
+
+  .footer-wrapper {
+    display: grid;
+    gap: 1rem;
+  }
+}
 
 @media only screen
   and (min-width: 415px)
@@ -444,13 +445,13 @@ main {
         padding-left: calc(1rem + min(var(--default-logo-dimension), 14vw));
       }
     }
-  }
 
-  .logo-iso {
-    width: min(var(--default-logo-dimension), 14vw);
-    height: min(var(--default-logo-dimension), 14vw);
-  }
+    .logo-iso {
+      width: min(var(--default-logo-dimension), 14vw);
+      height: min(var(--default-logo-dimension), 14vw);
+    }
 
+  }
 
 }
 
