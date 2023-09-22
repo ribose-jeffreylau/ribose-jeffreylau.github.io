@@ -1,4 +1,11 @@
 ---
+import NavItem from './NavItem.astro';
+
+interface Props {
+  currentPage: string;
+}
+
+const { currentPage } = Astro.props;
 
 ---
 
@@ -16,14 +23,14 @@
     </h1>
     <nav>
       <menu>
-        <li><a href="/">Home</a></li>
-        <li><a href="/registry">Registry</a></li>
-        <li><a href="/about">About</a></li>
+        <NavItem href="/">Home</NavItem>
+        <NavItem href="/registry">Registry</NavItem>
+        <NavItem href="/about">About</NavItem>
       </menu>
     </nav>
   </div>
 </header>
-<style lang="scss" is:global>
+<style lang="scss">
 
 header {
   /* padding: 1rem 0rem; */
@@ -53,12 +60,6 @@ header {
         display: flex;
         flex-direction: row;
         list-style-type: none;
-        li + li {
-          padding-left: 1rem;
-        }
-        a {
-          font-weight: 600;
-        }
       }
     }
   }
