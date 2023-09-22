@@ -1,4 +1,7 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 interface Props {
 	title: string;
 	classes?: string;
@@ -30,115 +33,13 @@ const description = "This is the official registry for the ISO 24229 standard.";
     <title>{title}</title>
   </head>
   <body class={classes ?? ""}>
-    <header>
-      <div class="header-wrapper">
-        <h1>
-          <a href="/" title="Back to home">
-            <div class="logo-iso">
-              <img class="logo-iso" src="/assets/logos/iso-logo-blue-9,78,156.svg" />
-            </div>
-            <div class="title-text">
-              ISO 24229 <span class="text-gradient">Registry</span>
-            </div>
-          </a>
-        </h1>
-        <nav>
-          <menu>
-            <li><a href="/">Home</a></li>
-            <li><a href="/registry">Registry</a></li>
-            <li><a href="/about">About</a></li>
-          </menu>
-        </nav>
-      </div>
-    </header>
+    <Header/>
     <main>
       <div class="main-wrapper">
         <slot />
       </div>
     </main>
-    <footer>
-      <div class="footer-wrapper">
-        <div class="source-code">
-          <h3>Source code</h3>
-          <menu>
-            <li class="github link">
-              <a href="https://github.com/iso24229/iso24229.github.io" target="_blank">
-                <div class="icon-social">
-                  <img src="/assets/icons/github.svg" />
-                </div>
-                This website
-              </a>
-            </li>
-            <li class="github link">
-              <a href="https://github.com/iso24229/iso24229-registry" target="_blank">
-              <div class="icon-social">
-                <img src="/assets/icons/github.svg" />
-              </div>
-                Registry data
-              </a>
-            </li>
-          </menu>
-        </div>
-        <div class="created-by">
-          <h6 class="created-by-text">
-            Powered by
-          </h6>
-          <ul>
-            <li>
-              <a href="https://www.calconnect.org/" target="_blank">
-                CalConnect
-              </a>
-            </li>
-            <li>
-              <a href="https://open.ribose.com" target="_blank">
-                Ribose Inc
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <menu class="social-links">
-          <h3>Links</h3>
-          <li>
-            <a href="https://twitter.com/isostandards" target="_blank">
-              𝕏.com
-            </a>
-          </li>
-          <li>
-            <a href="https://interscript.org" target="_blank">
-              Interscript
-            </a>
-          </li>
-        </menu>
-
-        <div class="official-affiliation-notice">
-          <!-- <h3>Legal</h3> -->
-          <div class="logo-iso">
-            <a href="https://www.iso.org" target="_blank"><img class="logo-iso" src="/assets/logos/iso-logo-black.svg" /></a>
-          </div>
-          <div class="copyright-notice">
-            <div>
-            © All Rights Reserved
-            </div>
-          </div>
-          <div class="working-group-text">
-            <a href="https://www.iso.org" target="_blank">ISO</a> / <a href="https://www.iso.org/committee/48750.html" target="_blank">TC 46</a> / WG 3
-          </div>
-          <!-- <menu> -->
-          <!--   <li> -->
-          <!--     <a href="/privacy"> -->
-          <!--       Privacy Policy -->
-          <!--     </a> -->
-          <!--   </li> -->
-          <!--   <li> -->
-          <!--     <a href="/tos"> -->
-          <!--       Terms of Service -->
-          <!--     </a> -->
-          <!--   </li> -->
-          <!-- </menu> -->
-        </div>
-      </div>
-    </footer>
+    <Footer/>
   </body>
 </html>
 <style lang="scss" is:global>
@@ -244,93 +145,6 @@ a {
   }
 }
 
-header {
-  /* padding: 1rem 0rem; */
-  padding: 1rem var(--main-padding-lr);
-  border-bottom: 2px solid black;
-  width: 100%;
-
-  .header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .logo-iso {
-    }
-
-    div {
-      display: inline-block;
-      vertical-align: middle;
-
-      + div {
-        padding-left: 1rem;
-      }
-    }
-
-    nav {
-      menu {
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        li + li {
-          padding-left: 1rem;
-        }
-        a {
-          font-weight: 600;
-        }
-      }
-    }
-  }
-}
-
-
-footer {
-  padding: 2rem var(--main-padding-lr);
-
-  border-top: 2px solid black;
-  width: 100%;
-
-  div {
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
-.official-affiliation-notice {
-  display: flex;
-  flex-direction: column;
-}
-
-.footer-wrapper {
-  display: flex;
-  justify-content: space-between;
-
-  ul, menu {
-    padding: 0;
-    list-style-type: none;
-    li {
-      padding-top: 0.5rem;
-    }
-  }
-
-  .created-by-text {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    padding-bottom: 0.1rem;
-  }
-
-  h3 {
-    padding-bottom: 0.2rem;
-  }
-
-  .icon-social {
-    display: inline-block;
-    background: url("/assets/icons/github.svg");
-    width: 1rem;
-    height: 1rem;
-    vertical-align: sub;
-  }
-}
 
 .logo-iso {
   /* background-color: #094e9c; */
@@ -399,89 +213,10 @@ h1, h2, h3, h4, h5, h6 {
   and (min-width: 1px)
   and (max-width: 415px) {
 
-  header {
-    .header-wrapper {
-      display: grid;
-      h1, h2, h3, h4, h5, h6 {
-        text-align: left;
-      }
-
-      h1 {
-        font-size: max(2rem, min(3rem, 7vw));
-      }
-
-      .logo-iso {
-        display: none;
-      }
-
-      .title-text {
-        padding: 0;
-      }
-
-    }
-
-    nav {
-      /* background: yellow; */
-      menu {
-        padding: 0;
-        padding-top: 1rem;
-      }
-    }
-  }
-
   .main-wrapper {
     h1, h2, h3, h4, h5, h6 {
       text-align: left;
     }
-  }
-
-}
-
-@media only screen
-and (max-width: 710px) {
-
-  .footer-wrapper {
-    display: grid;
-    gap: 2.5rem;
-  }
-}
-
-@media only screen
-  and (min-width: 415px)
-  and (max-width: 830px) {
-
-  header {
-    .header-wrapper {
-      display: grid;
-
-      h1 {
-        font-size: max(2rem, min(3rem, 7vw));
-      }
-    }
-
-    nav {
-      /* background: yellow; */
-      menu {
-        padding: 1rem 0;
-        padding-left: calc(1rem + min(var(--default-logo-dimension), 14vw));
-      }
-    }
-
-    .logo-iso {
-      width: min(var(--default-logo-dimension), 14vw);
-      height: min(var(--default-logo-dimension), 14vw);
-    }
-
-  }
-
-}
-
-@media only screen
-  and (min-width: 830px)
-  and (max-width: 1200px){
-
-  nav {
-    /* background: green; */
   }
 
 }
