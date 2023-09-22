@@ -2,13 +2,18 @@
 
 interface Props {
   href: string;
-  selected: bool;
+  title?: string;
+  classes?: string;
 }
 
-const { href, selected = false } = Astro.props;
+const { href } = Astro.props;
+let { classes = '' } = Astro.props;
 
+// let selected = false;
+let selected = (() => href === Astro.url.pathname)();
+classes = selected ? 'active' : classes ?? '';
 ---
-<li class={selected ? 'active' : ''}><a rel="prefetch-intent" href={href}><slot /></a></li>
+<li class={classes}><a rel="prefetch-intent" {...Astro.props}><slot /></a></li>
 <style lang="scss">
 li + li {
   padding-left: 1rem;
@@ -19,6 +24,7 @@ a {
 
 li.active a {
   border-bottom: 2px solid black;
+  transition: border-bottom .5s ease-in-out;
 }
 
 </style>

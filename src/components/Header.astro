@@ -6,10 +6,22 @@ interface Props {
 }
 
 const { currentPage } = Astro.props;
+const { pathname } = Astro.url;
 
 ---
+<script transition:persist is:inline>
+  const setActiveNavItem = () => {
+    console.log('pathname', window.pathname);
 
-<header>
+  };
+
+  // Runs on initial navigation
+  setActiveNavItem();
+
+  // Runs on view transitions navigation
+  document.addEventListener('astro:after-swap', setActiveNavItem);
+</script>
+<header transition:persist>
   <div class="header-wrapper">
     <h1>
       <a href="/" rel="prefetch-intent" title="Back to home">
