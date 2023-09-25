@@ -2,17 +2,17 @@
 
 interface Props {
   href: string;
-//   title?: string;
-//   classes?: string;
 }
 
 const { href } = Astro.props;
-// let { classes = '' } = Astro.props;
 
-// let selected = false;
-const isSelected = (() => href === Astro.url.pathname);
+// Remove trailing slash before comparing.
+const currentPath = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const isSelected = ((href: string): bool => currentPath === href);
+const li_props = isSelected(href) ? { class: 'active' } : {};
 ---
-  <li {...( href === Astro.url.pathname ? { class: 'active' } : {} )}><a {...Astro.props}><slot /></a></li>
+  <li {...li_props}><a {...Astro.props}><slot /></a></li>
+
 <style lang="scss">
 li + li {
   padding-left: 1rem;
