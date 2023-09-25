@@ -1,29 +1,12 @@
 ---
-import NavItem from './NavItem.astro';
+import NavBar from './NavBar.astro';
 
-interface Props {
-  currentPage: string;
-}
-
-const { currentPage } = Astro.props;
-const { pathname } = Astro.url;
+type Props = Record<string, never>;
 
 ---
-<script transition:persist is:inline>
-  const setActiveNavItem = () => {
-    console.log('pathname', window.pathname);
-
-  };
-
-  // Runs on initial navigation
-  setActiveNavItem();
-
-  // Runs on view transitions navigation
-  document.addEventListener('astro:after-swap', setActiveNavItem);
-</script>
-<header transition:persist>
+<header>
   <div class="header-wrapper">
-    <h1>
+    <h1 transition:persist>
       <a href="/" rel="prefetch-intent" title="Back to home">
         <div class="logo-iso">
           <img class="logo-iso" src="/assets/logos/iso-logo-blue-9,78,156.svg" />
@@ -33,13 +16,7 @@ const { pathname } = Astro.url;
         </div>
       </a>
     </h1>
-    <nav>
-      <menu>
-        <NavItem href="/">Home</NavItem>
-        <NavItem href="/registry">Registry</NavItem>
-        <NavItem href="/about">About</NavItem>
-      </menu>
-    </nav>
+    <NavBar />
   </div>
 </header>
 <style lang="scss">
@@ -67,13 +44,6 @@ header {
       }
     }
 
-    nav {
-      menu {
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-      }
-    }
   }
 }
 
@@ -103,13 +73,6 @@ header {
 
     }
 
-    nav {
-      /* background: yellow; */
-      menu {
-        padding: 0;
-        padding-top: 1rem;
-      }
-    }
   }
 
 }
@@ -124,14 +87,6 @@ header {
 
       h1 {
         font-size: max(2rem, min(3rem, 7vw));
-      }
-    }
-
-    nav {
-      /* background: yellow; */
-      menu {
-        padding: 1rem 0;
-        padding-left: calc(1rem + min(var(--default-logo-dimension), 14vw));
       }
     }
 
