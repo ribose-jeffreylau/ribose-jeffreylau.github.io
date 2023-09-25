@@ -26,30 +26,25 @@ header {
   padding: 1rem var(--main-padding-lr);
   border-bottom: 2px solid black;
   width: 100%;
-
-  .header-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .logo-iso {
-    }
-
-    div {
-      display: inline-block;
-      vertical-align: middle;
-
-      + div {
-        padding-left: 1rem;
-      }
-    }
-
-  }
 }
 
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    display: inline-block;
+    vertical-align: middle;
+
+    + div {
+      padding-left: 1rem;
+    }
+  }
+
+}
 
 @media only screen
-  and (min-width: 1px)
   and (max-width: 415px) {
 
   header {
@@ -67,7 +62,7 @@ header {
         display: none;
       }
 
-      .title-text {
+      div.title-text {
         padding: 0;
       }
 
