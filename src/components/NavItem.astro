@@ -1,5 +1,4 @@
 ---
-
 interface Props {
   href: string;
 }
@@ -11,12 +10,13 @@ const currentPath = Astro.url.pathname.replace(/(.)\/$/, '$1');
 const isSelected = ((href: string): bool => currentPath === href);
 const li_props = isSelected(href) ? { class: 'active' } : {};
 ---
-  <li {...li_props}><a {...Astro.props}><slot /></a></li>
+<li {...li_props}><a {...Astro.props}><slot /></a></li>
 
 <style lang="scss">
 li + li {
   padding-left: 1rem;
 }
+
 a {
   font-weight: 600;
 }

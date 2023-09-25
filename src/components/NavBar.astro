@@ -11,26 +11,19 @@ import NavItem from './NavItem.astro';
 </nav>
 <style lang="scss">
 
-
-nav {
-  menu {
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-  }
+menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
 }
-
 
 @media only screen
   and (min-width: 1px)
   and (max-width: 415px) {
 
-  nav {
-    /* background: yellow; */
-    menu {
-      padding: 0;
-      padding-top: 1rem;
-    }
+  menu {
+    padding: 0;
+    padding-top: 1rem;
   }
 }
 
@@ -38,12 +31,9 @@ nav {
   and (min-width: 415px)
   and (max-width: 830px) {
 
-  nav {
-    /* background: yellow; */
-    menu {
-      padding: 1rem 0;
-      padding-left: calc(1rem + min(var(--default-logo-dimension), 14vw));
-    }
+  menu {
+    padding: 1rem 0;
+    padding-left: calc(1rem + min(var(--default-logo-dimension), 14vw));
   }
 }
 
